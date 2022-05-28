@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-COMMERCE I</title>
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: rgba(248, 246, 246, 0.884);
+  }
+  /* Navbar related css */
+
+  #links {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1%;
+    box-shadow: 2px 2px 5px 5px rgb(189, 179, 179);
+  }
+
+  #links > div {
+    display: flex;
+    list-style: none;
+  }
+  #links a {
+    text-decoration: none;
+    color: teal;
+    font-size: 30px;
+  }
+  #submit {
+    width: 70%;
+    margin: auto;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 15px;
+  }
+  /* Navbar related css */
+
+  /* Form related css */
+input,
+  select {
+    display: block;
+    margin: 15px 0px;
+    font-size: 22px;
+    padding: 3%;
+  }
+  option {
+    font-size: 20px;
+  }
+  form {
+    width: 390px;
+    border: 1px solid rgb(230, 230, 230);
+    margin: 3% auto;
+    padding: 3%;
+    background: rgba(120, 190, 243, 0.644);
+  }
+</style>
+<body>
+<form id="form">
+        <h2>Enter Products data</h2>
+        <label for=""><h4>Product Name</h4></label>
+        <input placeholder="Enter products name" id="name" type="text" />
+        <label for=""><h4>Product category</h4></label>
+        <input type="text" placeholder="category" id="category">
+        <label for=""><h4>Product Image</h4></label>
+        <input type="url" name="url" id="img" placeholder="img url" id="img">
+        <label for=""><h4>Product Price</h4></label>
+        <input type="number" placeholder="price" id="price">
+        <select name="gender" id="gender">
+            <option selected>select gender</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+        <label for=""><h4>Product sold</h4></label>
+        <select name="sold" id="sold">
+            <option value="false">false</option>
+            <option value="true">true</option>
+        </select>
+        <input id="add" type="submit" value="Submit" />
+    </form>
+</body>
+</html>
+<script>
+let Products=JSON.parse(localStorage.getItem("Products"))||[];
+document.querySelector("#form").addEventListener("submit",collecting_data)
+ function collecting_data(){
+        event.preventDefault()
+ function productsdata(name,category,imgurl,price,gender,sold){
+            this.productsname=name;
+            this.category=category;
+            this.imgurl=imgurl;
+            this.price=price;
+            this.gender=gender;
+            this.sold=sold;
+            this.run=function(){
+                console.log(`${this.productsname} and ${this.imgurl}`)
+            }
+        }
+function productsdata(name,category,imgurl,price,gender,sold){
+            this.productsname=name;
+            this.category=category;
+            this.imgurl=imgurl;
+            this.price=price;
+            this.gender=gender;
+            this.sold=sold;
+            this.check= function(){
+                console.log(`${this.productsname} and ${this.imgurl}`)
+            }
+        }
+        let name=form.name.value;
+        let category=form.category.value;
+        let imgurl=form.img.value;
+        let price=form.price.value;
+        let gender=form.gender.value;
+        let sold=form.sold.value;
+       p1=new productsdata(name,category,imgurl, price,gender,sold)
+        console.log(p1)
+        Products.push(p1);
+        localStorage.setItem("Products",JSON.stringify(Products))
+      }
+// localStorage.clear()
+</script>
